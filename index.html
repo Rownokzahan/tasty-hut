@@ -31,7 +31,7 @@
 
                 <div class="input-group mx-auto" style="max-width: 350px;">
                     <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-                    <input id="search-text" type="text" class="form-control ps-0 border-0" placeholder="Search any food"
+                    <input id="search-text" type="search" class="form-control ps-0 border-0" placeholder="Search any food"
                         aria-label="Search" aria-describedby="search-btn">
                     <button id="search-btn" class="btn btn-warning fw-bold">Search</button>
                 </div>
@@ -41,37 +41,24 @@
 
     <main>
         <section class="my-5 py-5">
-            <h3 class="text-center">Your Favourite Food</h3>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-2 g-4 my-5">
-                    <div class="col">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-5">
-                                    <img src="./images/burger.png" class="w-100 h-100 rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-7 align-self-center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Chicken Handi</h5>
-                                        <p class="card-text text-muted">There are many variations of passages of
-                                            available,
-                                            but the majority have suffered</p>
-                                        <div class="card-text">
-                                            <button onclick="loadFoodDetails()"
-                                                class="bg-white border-0 text-warning text-decoration-underline"
-                                                data-bs-toggle="modal" data-bs-target="#food-details-modal">View
-                                                Details</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h3 class="text-center">Your Search Result</h3>
+            <p id="not-found-message" class="text-warning fs-4 text-center fw-semibold mt-5"></p>
+
+            <!-- spinner -->
+            <div class="d-none" id="spinner">
+                <div class="d-flex justify-content-center" >
+                    <div class="spinner-border text-warning" role="status">
+                      <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center">
-                <button id="show-all-btn mx=" class="btn btn-warning fw-bold">Show All</button>
+            <div class="container">
+                <div id="meals-list" class="row row-cols-1 row-cols-md-2 g-4 my-5"></div>
+            </div>
+
+            <div id="show-all" class="d-none text-center">
+                <button class="btn btn-warning fw-bold">Show All</button>
             </div>
         </section>
 
@@ -79,21 +66,7 @@
         <div class="modal fade" id="food-details-modal" tabindex="-1" aria-labelledby="food-details-modalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content px-3">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="food-details-modalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="food-details">
-                        <img class="w-100 rounded mb-4" src="./images/burger.png" alt="">
-                        <p>Category : </p>
-                        <p>Instruction : </p>
-                        <p>Area : </p>
-                        <p>Youtube : </p>
-                    </div>
-                    <div class="text-end mb-3">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
+                <div class="modal-content px-3" id="food-details">
                 </div>
             </div>
         </div>
@@ -149,7 +122,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 
-    <script src="./js/script.js"></script>    
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
