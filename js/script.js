@@ -27,6 +27,9 @@ function loadMeals(hasDataLimit) {
 }
 
 function displayMeals(meals, hasDataLimit) {
+    const mealList = document.getElementById('meals-list');
+    mealList.innerHTML = '';
+    
     if (meals == null) {
         //stop spinner
         spinner(false);
@@ -43,8 +46,6 @@ function displayMeals(meals, hasDataLimit) {
         document.getElementById('show-all').classList.add('d-none');
     }
 
-    const mealList = document.getElementById('meals-list');
-    mealList.innerHTML = '';
     for (const meal of meals) {
         const div = document.createElement('div');
         div.classList.add('col');
